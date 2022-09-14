@@ -10,12 +10,17 @@ class App extends React.Component {
       ]
       }
 
+      addBook=(value)=>{
+        t
+
+      }
+
   render(){
     
   return (
    <div>
-    <Form />
-    <List Data ={this.state.data} />
+    <Form addBook={this.addBook} />
+    <List Data ={this.state.data} addBook={this.addBook} />
    </div>
   );
 }

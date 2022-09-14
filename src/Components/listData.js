@@ -4,9 +4,10 @@ import { Fragment } from "react";
 class List extends React.Component{
     render(){
         const Data = this.props.Data 
-        const show_Data = Data.map(value =>{
+        const show_Data = Data.map((value ,index) =>{
+        
             return(
-                <Fragment>
+                <Fragment key={index}>
              <tr>
                 <td>{value.id}</td>
                 <td>{value.book}</td>
