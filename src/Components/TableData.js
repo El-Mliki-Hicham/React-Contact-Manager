@@ -3,18 +3,41 @@ import axios from "axios";
 import { useState ,useEffect } from "react";
 
 
-export const Table =()=>{
 
-    const [state, setState] = useState([{}]);
-    useEffect(() => {
-       getData();
-       console.log(state)
-        }, []);
-const getData = async ()=>{
-    await axios.get('http://localhost:4000/user')
-    .then((res)=>setState(res.data))
 
-}  
+export class Table extends React.Component {
+
+   
+        state = {
+          user: []
+        }   
+    componentDidMount() {
+        fetch("http://localhost:4000/user")
+          .then(res => res.json())
+          .then(
+            (result) => {
+             this.setState({
+                user : result
+             })
+             console.log(this.state)
+            },
+          )
+      }
+
+      
+
+    
+//     const [state, setState] = useState([{}]);
+//     useEffect(() => {
+//        getData();
+//        console.log(state)
+//         }, []);
+// const getData = async ()=>{
+//     await axios.get('http://localhost:4000/user')
+//     .then((res)=>setState(res.data))
+
+// }  
+render(){
     return(
     <div >
 
@@ -37,4 +60,5 @@ const getData = async ()=>{
  
 </div>
 )
+}
 }
