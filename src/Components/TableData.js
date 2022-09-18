@@ -1,11 +1,19 @@
 import React from "react";
 import axios from "axios";
+import { useState ,useEffect } from "react";
+
 
 export const Table =()=>{
 
-    const [data, setData] = useState([{}]);
+    const [state, setState] = useState([{}]);
+    useEffect(() => {
+       getData();
+       console.log(state)
+        }, []);
 const getData = async ()=>{
-    await axios.get('http://localhost:8000/user').then((res)=>setData(res.data))
+    await axios.get('http://localhost:4000/user')
+    .then((res)=>setState(res.data))
+
 }  
     return(
     <div >
