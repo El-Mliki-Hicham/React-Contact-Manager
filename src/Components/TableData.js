@@ -7,7 +7,7 @@ import { useState ,useEffect } from "react";
 
 export class Table extends React.Component {
 
-   
+    
         state = {
           user: []
         }   
@@ -27,16 +27,7 @@ export class Table extends React.Component {
       
 
     
-//     const [state, setState] = useState([{}]);
-//     useEffect(() => {
-//        getData();
-//        console.log(state)
-//         }, []);
-// const getData = async ()=>{
-//     await axios.get('http://localhost:4000/user')
-//     .then((res)=>setState(res.data))
-
-// }  
+//     
 render(){
     return(
     <div >
@@ -51,11 +42,15 @@ render(){
             <th>Action</th>
         </tr>
         </thead>
-        <tbody>
-            <td></td>
-            <td></td>
-            <td></td>
+        {this.state.user.map(user => (
+        <tbody key={user.id}>
+            
+            <td>{user.id}</td>
+            <td>{user.Name}</td>
+            <td>{user.Phone}</td>
+            <td>{user.Email}</td>
             </tbody>
+          ))}
        </table>
  
 </div>
