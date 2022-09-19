@@ -19,7 +19,6 @@ export class Table extends React.Component {
              this.setState({
                 user : result
              })
-             console.log(this.state)
             },
           )
       }

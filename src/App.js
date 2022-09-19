@@ -3,11 +3,11 @@ import { AddUser } from "./Components/AddUser";
 import { Table } from "./Components/TableData";
 class App extends React.Component {
   
-
-
+  
+ 
   render(){
     
-  return (
+    return (
     <div>
   <AddUser />
   <Table />
