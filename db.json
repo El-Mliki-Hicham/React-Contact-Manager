@@ -1,6 +1,3 @@
 {
-    "user": [
-      { "id": 2, "Name": "Hicham", "Phone": "0606006","Email":"dd@gmail.com" },
-      { "id": 3, "Name": "nada", "Phone": "062222","Email":"nada@gmail.com" }
-    ]
-  }
+  "user": []
+}

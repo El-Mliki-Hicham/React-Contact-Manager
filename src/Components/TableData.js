@@ -25,7 +25,13 @@ export class Table extends React.Component {
       }
 
       
+handleDelete= async(id)=>{
 
+  await axios.delete('http://localhost:4000/user/'+id)
+  .then((res)=> alert("deleted success"));
+  window.location.reload(false);
+   
+}
     
 //     
 render(){
@@ -49,6 +55,11 @@ render(){
             <td>{user.Name}</td>
             <td>{user.Phone}</td>
             <td>{user.Email}</td>
+            <td  >
+
+            <button style={{marginRight:"10px"}} className="btn btn-info">Edit</button>
+            <button className="btn btn-danger" style={{color:'red'}}  onClick={()=>this.handleDelete(user.id)}>Delete</button>
+            </td>
             </tbody>
           ))}
        </table>
