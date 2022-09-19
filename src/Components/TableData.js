@@ -6,8 +6,6 @@ import { useState ,useEffect } from "react";
 
 
 export class Table extends React.Component {
-
-    
         state = {
           user: []
         }   
