@@ -1,5 +1,7 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from "axios";
+import './AddUser.css'
+
 export class AddUser extends React.Component{
 
     state = {
@@ -9,21 +11,19 @@ export class AddUser extends React.Component{
         Email: ''
     };
 
+    //stock value in state
 changeHandler= (e) => {
     this.setState({ [e.target.id]: e.target.value})
-    console.log(this.state)
+    // console.log(this.state)
 }   
 
-submitHandler = e => {
-    e.preventDefault()
-    console.log(this.state)
-    axios.post('https://reqres.in/api/users?per_page=20', this.state)
-        .then(response => {
-            console.log(response)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+// send data to api json-server
+submitHandler = (e) => {
+    e.preventDefault() 
+    axios.post('http://localhost:4000/user', this.state)
+ // auto reload page     
+    window.location.reload(false);
+       
 }
 render() {
     return(
@@ -31,7 +31,7 @@ render() {
             <div className="row">
                 <div className="col-md-7">
                     <h1>Add User Form</h1>
-                    <form>
+                    <form  onSubmit={this.submitHandler}>
                         <div class="form-group">
                             <label for="Name">Full Name</label>
                             <input type="text" class="form-control"  onChange={this.changeHandler} id="Name" placeholder="Enter Name"></input>
@@ -44,7 +44,7 @@ render() {
                             <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"  onChange={this.changeHandler} placeholder="Enter email"></input>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" style={{marginTop:'20px',marginBottom:'20px'}} class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
