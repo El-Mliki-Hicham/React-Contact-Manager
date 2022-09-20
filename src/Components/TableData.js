@@ -6,9 +6,10 @@ import { useState ,useEffect } from "react";
 
 
 class Table extends React.Component {
+  
         state = {
           user: [],
-          edit:[]
+          edit :[]
         }  
         
         //get data from api json-server
@@ -35,16 +36,16 @@ handleDelete= async(id)=>{
 //edit function 
 handleEdit = async(id)=>{
   await axios.get('http://localhost:4000/user/'+id)
-  .then(res => {
-  console.log(res.data)
-  })
-  .then(
-    (result) => {
-     this.setState({
-        edit : result
+
+    .then((res)=>{
+      this.setState({
+        edit:res.data
      })
-    },
-  )
+    // alert(res.data.Name));
+
+  
+})
+  
 console.log(this.state)
 }
     

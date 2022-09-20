@@ -32,19 +32,19 @@ render() {
                 <div className="col-md-7">
                     <h1>Add User Form</h1>
                     <form  onSubmit={this.submitHandler}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="Name">Full Name</label>
-                            <input type="text" class="form-control"  onChange={this.changeHandler} id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control"  onChange={this.changeHandler} id="Name" placeholder="Enter Name"></input>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="Phone">Phone number</label>
-                            <input type="text" class="form-control" id="Phone"  onChange={this.changeHandler}  placeholder="Enter Number"></input>
+                            <input type="text" className="form-control" id="Phone"  onChange={this.changeHandler}  placeholder="Enter Number"></input>
                         </div>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"  onChange={this.changeHandler} placeholder="Enter email"></input>
+                            <input type="email" className="form-control" id="Email" aria-describedby="emailHelp"  onChange={this.changeHandler} placeholder="Enter email"></input>
                         </div>
-                        <button type="submit" style={{marginTop:'20px',marginBottom:'20px'}} class="btn btn-primary">Submit</button>
+                        <button type="submit" style={{marginTop:'20px',marginBottom:'20px'}} className="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
