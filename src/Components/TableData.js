@@ -5,9 +5,10 @@ import { useState ,useEffect } from "react";
 
 
 
-export class Table extends React.Component {
+class Table extends React.Component {
         state = {
-          user: []
+          user: [],
+          edit:[]
         }  
         
         //get data from api json-server
@@ -30,6 +31,21 @@ handleDelete= async(id)=>{
   .then((res)=> alert("deleted success"));
   window.location.reload(false);
    
+}
+//edit function 
+handleEdit = async(id)=>{
+  await axios.get('http://localhost:4000/user/'+id)
+  .then(res => {
+  console.log(res.data)
+  })
+  .then(
+    (result) => {
+     this.setState({
+        edit : result
+     })
+    },
+  )
+console.log(this.state)
 }
     
 //     
@@ -54,9 +70,9 @@ render(){
             <td>{user.Name}</td>
             <td>{user.Phone}</td>
             <td>{user.Email}</td>
-            <td  >
+            <td>
 
-            <button style={{marginRight:"10px"}} className="btn btn-info">Edit</button>
+            <button style={{marginRight:"10px"}} className="btn btn-info"  onClick={()=>this.handleEdit(user.id)}>Edit</button>
             <button className="btn btn-danger" style={{color:'red'}}  onClick={()=>this.handleDelete(user.id)}>Delete</button>
             </td>
             </tbody>
@@ -67,3 +83,4 @@ render(){
 )
 }
 }
+export default Table
