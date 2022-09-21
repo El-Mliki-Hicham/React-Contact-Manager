@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Edit } from "./EditUser";
-import {Route, Link, Routes, useParams, useNavigate} from 'react-router-dom';
+import {Route, Link, Routes, useParams, useNavigate  ,BrowserRouter} from 'react-router-dom';
 import { useState ,useEffect } from "react";
 
 
@@ -83,11 +83,18 @@ render(){
             <td>{user.Email}</td>
             <td>
    
-           <button onClick={navigateToContacts()}> test</button>
+           <button onClick={()=>this.nav()}>heelo</button>
             <button style={{marginRight:"10px"}} className="btn btn-info"  onClick={()=>this.handleEdit(user.id)}>Edit</button>
             <button className="btn btn-danger" style={{color:'red'}}  onClick={()=>this.handleDelete(user.id)}>Delete</button>
-       
+            <BrowserRouter>
+                
+    <Routes>
+      <Route path="/edits" element={<Edit />}> </Route>
+      
+    </Routes>
+    </BrowserRouter>
             </td>
+            
         
             </tr>
             </tbody>
