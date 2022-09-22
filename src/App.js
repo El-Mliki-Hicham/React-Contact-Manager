@@ -18,12 +18,14 @@ class App extends React.Component {
                <BrowserRouter>
                 
                 <Routes>
-                  <Route  exact  path="/edit" element={<Edit />}> </Route>
+                  <Route    path="/edit/:id" element={<Edit />}> </Route>
+                  <Route path="/" element={ < AddUser />}/>
+                  
                   
                 </Routes>
                 </BrowserRouter>
-  <AddUser />
-  <Table />
+              
+                    <Table />
   </div>
   )
 }

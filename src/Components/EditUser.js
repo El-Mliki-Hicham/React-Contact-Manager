@@ -35,7 +35,7 @@ render() {
                     <form >
                         <div className="form-group">
                             <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control"  id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control" value='hello' id="Name" placeholder="Enter Name"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
