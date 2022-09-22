@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
 import  Edit  from "./EditUser";
-import {Route, Link, Routes, useParams, useNavigate  ,BrowserRouter, NavLink} from 'react-router-dom';
+import { NavLink ,Router, useLocation} from "react-router-dom";
 import { useState ,useEffect } from "react";
+import { Provider } from "react";
 
 
 
@@ -54,12 +55,8 @@ class Table extends React.Component {
     
 //   
 
-nav = () => {
-  let navigate = useNavigate();  
-    let path = `/edit`; 
-    navigate(path);
-  
-};
+
+
 
 
 render(){
@@ -84,9 +81,8 @@ render(){
             <td>{user.Phone}</td>
             <td>{user.Email}</td>
             <td>
-   
-            <NavLink to={'edit/'+user.id}>edit</NavLink>
-            <button style={{marginRight:"10px"}} className="btn btn-info"  onClick={()=>this.handleEdit(user.id)}>Edit</button>
+
+            <a href={'/edit/'+user.id}> <button style={{marginRight:"10px"}} className="btn btn-info"  >Edit</button></a>
             <button className="btn btn-danger" style={{color:'red'}}  onClick={()=>this.handleDelete(user.id)}>Delete</button>
      
                 

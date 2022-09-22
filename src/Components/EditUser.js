@@ -1,15 +1,57 @@
 import React from "react";
 import axios from "axios";
 import './AddUser.css'
+import { useParams } from "react-router-dom";
 
+function withParams(Component) {
+   return props => <Component {...props} params={useParams()} />;
+}
  class Edit extends React.Component{
+     state = {
+        id: '',
+        Name: '',
+        Phone: '',
+        Email: ''
+    };
+    componentDidMount() {
+        const id = this.props.match.params.id;
+        this.fetchData(id);
+    }
+    
+    fetchData = id => {
+        // ...
+    };
 
-    // state = {
-    //     id: '',
-    //     Name: '',
-    //     Phone: '',
-    //     Email: ''
-    // };
+     //edit function 
+// handleEdit = async(id)=>{
+   
+//   await axios.get('http://localhost:4000/user/'+id)
+  
+//   .then((res)=>{
+   
+//       console.log(res.data)
+      
+//     })
+    
+    
+// }
+    
+
+
+
+    // handleUpdate = () => {
+    //     const { Name, Phone, Email } = this.state;
+
+    //     axios.put(`http://dummy.restapiexample.com/api/v1/update/5`, {
+    //         Name: {Name},
+    //         Phone: {Phone},
+    //         Email: {Email}
+    //     })
+    //     .then(response => {
+    //         this.setState({ status: response.status });
+    //     })
+    // }
+  
 
     //stock value in state
 // changeHandler=(e) => {
@@ -26,6 +68,7 @@ import './AddUser.css'
 //     window.location.reload(false);
        
 // }
+
 render() {
     return(
         <div className="container">
@@ -35,7 +78,7 @@ render() {
                     <form >
                         <div className="form-group">
                             <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control" value='hello' id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control" value={'hello'} id="Name" placeholder="Enter Name"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
