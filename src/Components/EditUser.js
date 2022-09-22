@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import './AddUser.css'
 
-export class Edit extends React.Component{
+ class Edit extends React.Component{
 
     // state = {
     //     id: '',
@@ -53,3 +53,4 @@ render() {
     )
 }
 }
+export default Edit
