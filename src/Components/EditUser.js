@@ -3,9 +3,8 @@ import axios from "axios";
 import './AddUser.css'
 import { useParams } from "react-router-dom";
 
-function withParams(Component) {
-   return props => <Component {...props} params={useParams()} />;
-}
+
+
  class Edit extends React.Component{
      state = {
         id: '',
@@ -14,13 +13,18 @@ function withParams(Component) {
         Email: ''
     };
     componentDidMount() {
-        const id = this.props.match.params.id;
-        this.fetchData(id);
-    }
+        // const params = useParams();
+        // console.log(params)
+        axios.get('http://localhost:4000/user/2')
+  
+          .then((res)=>{
+           
+              console.log(res.data)
+          })
+            }
     
-    fetchData = id => {
-        // ...
-    };
+ 
+    
 
      //edit function 
 // handleEdit = async(id)=>{
@@ -70,6 +74,7 @@ function withParams(Component) {
 // }
 
 render() {
+    
     return(
         <div className="container">
             <div className="row">
@@ -78,7 +83,7 @@ render() {
                     <form >
                         <div className="form-group">
                             <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control" value={'hello'} id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control" defaultValue={'hello'} id="Name" placeholder="Enter Name"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
