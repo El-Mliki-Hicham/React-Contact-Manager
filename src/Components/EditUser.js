@@ -2,42 +2,32 @@ import React from "react";
 import axios from "axios";
 import './AddUser.css'
 import { useParams } from "react-router-dom";
-import withRouter from "./EditUse";
+import withRouter from "./withRouter";
 
 
  class Edit extends React.Component{
-     state = {
-        id: '',
-        Name: '',
-        Phone: '',
-        Email: ''
+     state = { user:''
     };
     componentDidMount() {
-       console.log('Props:',this.props.params.id)
-        // axios.get('http://localhost:4000/user/2')
+        let id =this.props.params.id
+       console.log(id)
+        axios.get('http://localhost:4000/user/'+id)
   
-        //   .then((res)=>{
+          .then((res)=>{
            
-        //       console.log(res.data)
-        //   })
+            this.setState({
+                user: res.data
+            })
+            console.log(this.state.user)
+            
+          
+           
+          })
              }
     
  
     
 
-     //edit function 
-// handleEdit = async(id)=>{
-   
-//   await axios.get('http://localhost:4000/user/'+id)
-  
-//   .then((res)=>{
-   
-//       console.log(res.data)
-      
-//     })
-    
-    
-// }
     
 
 
@@ -74,15 +64,21 @@ import withRouter from "./EditUse";
 
 render() {
     
+   
+   
     return(
+
+
+        
         <div className="container">
             <div className="row">
                 <div className="col-md-7">
                     <h1>Add User Form</h1>
+                    {this.state.user.map(user => (
                     <form >
                         <div className="form-group">
                             <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control" defaultValue={'hello'} id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control" defaultValue={""} id="Name" placeholder="Enter Name"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
@@ -94,6 +90,7 @@ render() {
                         </div>
                         <button type="submit" style={{marginTop:'20px',marginBottom:'20px'}} className="btn btn-primary">Submit</button>
                     </form>
+                         ))}
                 </div>
             </div>
         </div>
