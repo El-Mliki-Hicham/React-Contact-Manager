@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import './AddUser.css'
 import { useParams } from "react-router-dom";
-
+import withRouter from "./EditUse";
 
 
  class Edit extends React.Component{
@@ -13,15 +13,14 @@ import { useParams } from "react-router-dom";
         Email: ''
     };
     componentDidMount() {
-        // const params = useParams();
-        // console.log(params)
-        axios.get('http://localhost:4000/user/2')
+       console.log('Props:',this.props.params.id)
+        // axios.get('http://localhost:4000/user/2')
   
-          .then((res)=>{
+        //   .then((res)=>{
            
-              console.log(res.data)
-          })
-            }
+        //       console.log(res.data)
+        //   })
+             }
     
  
     
@@ -101,4 +100,4 @@ render() {
     )
 }
 }
-export default Edit
+export default withRouter(Edit);

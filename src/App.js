@@ -17,12 +17,16 @@ class App extends React.Component {
     <div>
                <BrowserRouter>
                 
-                <Routes>
+              <Routes>
+              
+                
+
                   <Route  path="/edit/:id" element={<Edit />}> </Route>
                   <Route path="/" element={ < AddUser />}/>
                   
                   
-                </Routes>
+                  </Routes>
+
                 </BrowserRouter>
               
                     <Table />
