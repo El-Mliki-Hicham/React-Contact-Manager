@@ -6,21 +6,35 @@ import withRouter from "./withRouter";
 
 
  class Edit extends React.Component{
-     state = { user : [],
-       update:''
+     state ={
+     id: '',
+     Name: '',
+     Phone: '',
+     Email: ''
       
     };
+
+    changeHandler=(e) => {
+      
+            this.setState({ [e.target.id]: e.target.value})
+     
+        console.log(this.state)
+    }   
+
+
     componentDidMount() {
         let id =this.props.params.id
-       console.log(id)
+      
         axios.get('http://localhost:4000/user/'+id)
   
           .then((res)=>{
            
             this.setState({
-                user: res.data
+                Name: res.data.Name,
+                Phone: res.data.Phone,
+                Email: res.data.Email
             })
-            console.log(this.state.user)
+            console.log(this.state)
             
           
            
@@ -34,40 +48,26 @@ import withRouter from "./withRouter";
 
 
 
-    // handleUpdate = () => {
-    //     const { Name, Phone, Email } = this.state;
-
-    //     axios.put(`http://dummy.restapiexample.com/api/v1/update/5`, {
-    //         Name: {Name},
-    //         Phone: {Phone},
-    //         Email: {Email}
-    //     })
-    //     .then(response => {
-    //         this.setState({ status: response.status });
-    //     })
-    // }
+    handleUpdate = () => {
+       
+        let id = this.props.params.id
+        const { Name, Phone, Email } = this.state;
+        axios.put('http://localhost:4000/user/'+id ,{
+            Name: Name,
+            Phone: Phone,
+            Email: Email
+        })
+        // window.location.reload(false);
+        // this.props.Nav;
+    }
   
 
-    // stock value in state
-changeHandler=(e) => {
-    this.setState({ update: e.target.value})
-    
-    console.log(this.state.update)
-}   
 
-// send data to api json-server
-submitHandler = (e) => {
-    e.preventDefault() 
-    axios.post('http://localhost:4000/user', this.state)
- // auto reload page     
-    window.location.reload(false);
-       
-}
 
 render() {
     
    
-    const { Name, Phone, Email } = this.state.user;
+    const { Name, Phone, Email } = this.state;
    
     return(
 
@@ -77,20 +77,20 @@ render() {
                 <div className="col-md-7">
                     <h1>Add User Form</h1>
                     
-                    <form >
+                    <form  >
                         <div className="form-group" onSubmit={()=>this.submitHandler}>
                             <label htmlFor="Name">Full Name</label>
                             <input type="text" className="form-control" defaultValue={Name} id="Name" placeholder="Enter Name" onChange={this.changeHandler}></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
-                            <input type="text" className="form-control" id="Phone"   defaultValue={Phone}  placeholder="Enter Number" onChange={()=>this.changeHandler}></input>
+                            <input type="numbre" className="form-control"    defaultValue={Phone} id="Phone" placeholder="Enter Number" onChange={this.changeHandler}></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="email" className="form-control" id="Email"  defaultValue={Email} aria-describedby="emailHelp"  placeholder="Enter email" onChange={()=>this.changeHandler}></input>
+                            <input type="email" className="form-control" id="Email"  defaultValue={Email} aria-describedby="emailHelp"  placeholder="Enter email" onChange={this.changeHandler}></input>
                         </div>
-                        <button type="submit" style={{marginTop:'20px',marginBottom:'20px'}} className="btn btn-primary">Submit</button>
+                        <input type="button" name="update" style={{marginTop:'20px',marginBottom:'20px'}} className="btn btn-primary"   onClick={this.handleUpdate}></input>
                     </form>
                         
                 </div>
