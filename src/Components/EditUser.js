@@ -59,6 +59,7 @@ import withRouter from "./withRouter";
         })
         // window.location.reload(false);
         // this.props.Nav;
+        window.location.reload(false);
     }
   
 
@@ -90,7 +91,7 @@ render() {
                             <label htmlFor="exampleInputEmail1">Email address</label>
                             <input type="email" className="form-control" id="Email"  defaultValue={Email} aria-describedby="emailHelp"  placeholder="Enter email" onChange={this.changeHandler}></input>
                         </div>
-                        <input type="button" name="update" style={{marginTop:'20px',marginBottom:'20px'}} className="btn btn-primary"   onClick={this.handleUpdate}></input>
+                        <input type="button" name="update" style={{marginTop:'20px',marginBottom:'20px'}} value='Update' className="btn btn-primary"   onClick={this.handleUpdate}></input>
                     </form>
                         
                 </div>
