@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import './AddUser.css'
-import { useParams } from "react-router-dom";
+
 import withRouter from "./withRouter";
 
 
@@ -13,15 +13,12 @@ import withRouter from "./withRouter";
      Email: ''
       
     };
-
     changeHandler=(e) => {
       
             this.setState({ [e.target.id]: e.target.value})
      
         console.log(this.state)
     }   
-
-
     componentDidMount() {
         let id =this.props.params.id
       
@@ -34,20 +31,10 @@ import withRouter from "./withRouter";
                 Phone: res.data.Phone,
                 Email: res.data.Email
             })
-            console.log(this.state)
-            
-          
-           
+            console.log(this.state)       
           })
-             }
-    
- 
-    
-
-    
-
-
-
+        }
+          
     handleUpdate = () => {
        
         let id = this.props.params.id
@@ -57,23 +44,17 @@ import withRouter from "./withRouter";
             Phone: Phone,
             Email: Email
         })  
-        if(this.handleUpdate){   
+          
         window.location.replace('/')
-    }
+    
     }
   
-
-
-
 render() {
-    
-   
+      
     const { Name, Phone, Email } = this.state;
    
     return(
-
-        
-        <div className="container">
+     <div className="container">
             <div className="row">
                 <div className="col-md-7">
                     <h1>Add User Form</h1>
