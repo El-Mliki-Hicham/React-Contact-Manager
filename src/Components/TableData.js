@@ -82,7 +82,7 @@ render(){
             <td>{user.Email}</td>
             <td>
 
-            <a href={'/edit/'+user.id}  > <button style={{marginRight:"10px"}} className="btn btn-info"  >Edit</button></a>
+            <a href={'/edit/'+user.id}> <button style={{marginRight:"10px"}} className="btn btn-info"  >Edit</button></a>
             <button className="btn btn-danger" style={{color:'red'}}  onClick={()=>this.handleDelete(user.id)}>Delete</button>
      
                 

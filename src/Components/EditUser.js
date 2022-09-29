@@ -56,10 +56,10 @@ import withRouter from "./withRouter";
             Name: Name,
             Phone: Phone,
             Email: Email
-        })
-        // window.location.reload(false);
-        // this.props.Nav;
-        window.location.reload(false);
+        })  
+        if(this.handleUpdate){   
+        window.location.replace('/')
+    }
     }
   
 

@@ -1,10 +1,22 @@
 {
   "user": [
     {
-      "Name": " hicham",
-      "Phone": "050505050",
-      "Email": "hicham@gmail.com",
+      "Name": "nada",
+      "Phone": "1222",
+      "Email": "nada@ff",
       "id": 1
+    },
+    {
+      "Name": "add",
+      "Phone": "bd",
+      "Email": "c",
+      "id": 2
+    },
+    {
+      "Name": "aasss sssss",
+      "Phone": "ff",
+      "Email": "s",
+      "id": 3
     }
   ]
 }
