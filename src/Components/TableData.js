@@ -17,7 +17,7 @@ class Table extends React.Component {
   
   //get data from api json-server
   componentDidMount() {
-    fetch("http://localhost:4000/user")
+    fetch("http://127.0.0.1:8000/api/data")
     .then(res => res.json())
     .then(
       (result) => {
@@ -30,7 +30,7 @@ class Table extends React.Component {
     
     //delete function
     handleDelete= async(id)=>{
-  await axios.delete('http://localhost:4000/user/'+id)
+  await axios.delete('http://127.0.0.1:8000/api/delete/'+id)
   .then((res)=> alert("deleted success"));
   window.location.reload(false);
    
@@ -77,7 +77,7 @@ render(){
         <tbody key={user.id}>
             <tr>
             <td>{user.id}</td>
-            <td>{user.Name}</td>
+            <td>{user.Nom}</td>
             <td>{user.Phone}</td>
             <td>{user.Email}</td>
             <td>

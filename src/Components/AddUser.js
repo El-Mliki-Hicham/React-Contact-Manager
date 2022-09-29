@@ -6,7 +6,7 @@ export class AddUser extends React.Component{
 
     state = {
         id: '',
-        Name: '',
+        Nom: '',
         Phone: '',
         Email: ''
     };
@@ -14,17 +14,21 @@ export class AddUser extends React.Component{
     //stock value in state
 changeHandler=(e) => {
     this.setState({ [e.target.id]: e.target.value})
-    // console.log(this.state)
+    console.log(this.state)
 }   
 
 // send data to api json-server
-submitHandler = (e) => {
+submitHandler = async(e) => {
     e.preventDefault() 
-    axios.post('http://localhost:4000/user', this.state)
- // auto reload page     
-    window.location.reload(false);
-       
+    await axios.post('http://127.0.0.1:8000/api/add', this.state)
+    .then((res)=> alert("add success"));
+    window.location.reload(false); 
+   
+//  setTimeout(function(){
+//     window.location.reload();
+//  }, 500);
 }
+
 render() {
     return(
         <div className="container">
@@ -34,7 +38,7 @@ render() {
                     <form  onSubmit={this.submitHandler}>
                         <div className="form-group">
                             <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control"  onChange={this.changeHandler} id="Name" placeholder="Enter Name"></input>
+                            <input type="text" className="form-control"  onChange={this.changeHandler} id="Nom" placeholder="Enter Name"></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>

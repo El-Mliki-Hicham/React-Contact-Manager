@@ -8,7 +8,7 @@ import withRouter from "./withRouter";
  class Edit extends React.Component{
      state ={
      id: '',
-     Name: '',
+     Nom: '',
      Phone: '',
      Email: ''
       
@@ -17,30 +17,33 @@ import withRouter from "./withRouter";
       
             this.setState({ [e.target.id]: e.target.value})
      
-        console.log(this.state)
+        // console.log(this.state)
     }   
-    componentDidMount() {
+    async componentDidMount()  {
         let id =this.props.params.id
       
-        axios.get('http://localhost:4000/user/'+id)
+      
+       await axios.get('http://127.0.0.1:8000/api/data/'+id)
   
-          .then((res)=>{
-           
-            this.setState({
-                Name: res.data.Name,
-                Phone: res.data.Phone,
-                Email: res.data.Email
+       .then((res)=> {
+        
+           this.setState({
+               
+                Nom: res.data[0].Nom,
+                Phone: res.data[0].Phone,
+                Email: res.data[0].Email
             })
             console.log(this.state)       
           })
         }
+        
           
-    handleUpdate = () => {
+    handleUpdate =async () => {
        
         let id = this.props.params.id
-        const { Name, Phone, Email } = this.state;
-        axios.put('http://localhost:4000/user/'+id ,{
-            Name: Name,
+        const { Nom, Phone, Email } = this.state;
+      await  axios.put('http://127.0.0.1:8000/api/update/'+id ,{
+            Nom: Nom,
             Phone: Phone,
             Email: Email
         })  
@@ -51,7 +54,7 @@ import withRouter from "./withRouter";
   
 render() {
       
-    const { Name, Phone, Email } = this.state;
+    const { Nom, Phone, Email } = this.state;
    
     return(
      <div className="container">
@@ -61,8 +64,8 @@ render() {
                     
                     <form  >
                         <div className="form-group" onSubmit={()=>this.submitHandler}>
-                            <label htmlFor="Name">Full Name</label>
-                            <input type="text" className="form-control" defaultValue={Name} id="Name" placeholder="Enter Name" onChange={this.changeHandler}></input>
+                            <label htmlFor="Nom">Full Name</label>
+                            <input type="text" className="form-control" defaultValue={Nom} id="Nom" placeholder="Enter Name" onChange={this.changeHandler}></input>
                         </div>
                         <div className="form-group">
                             <label htmlFor="Phone">Phone number</label>
